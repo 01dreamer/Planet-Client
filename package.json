@@ -9,17 +9,31 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "vue": "^3.4.21"
+    "axios": "^1.7.7",
+    "pinia": "^2.2.6",
+    "prettier": "^3.3.3",
+    "ssh2-promise": "^1.0.3",
+    "unplugin-auto-import": "^0.18.3",
+    "vite-plugin-vue-devtools": "^7.6.3",
+    "vue": "^3.4.21",
+    "vue-router": "^4.4.5"
   },
   "devDependencies": {
+    "@iconify/json": "^2.2.269",
+    "@types/node": "^22.9.0",
+    "@types/ssh2": "^1.15.1",
     "@vitejs/plugin-vue": "^5.0.4",
-    "typescript": "^5.2.2",
-    "vite": "^5.1.6",
-    "vue-tsc": "^2.0.26",
     "electron": "^30.0.1",
     "electron-builder": "^24.13.3",
+    "naive-ui": "^2.40.1",
+    "typescript": "^5.2.2",
+    "unocss": "^0.64.0",
+    "unplugin-icons": "^0.20.1",
+    "unplugin-vue-components": "^0.27.4",
+    "vite": "^5.1.6",
     "vite-plugin-electron": "^0.28.6",
-    "vite-plugin-electron-renderer": "^0.14.5"
+    "vite-plugin-electron-renderer": "^0.14.5",
+    "vue-tsc": "^2.0.26"
   },
   "main": "dist-electron/main.js"
 }

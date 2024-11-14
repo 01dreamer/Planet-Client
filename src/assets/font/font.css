@@ -1,0 +1,15 @@
+/* 普通体 */
+@font-face {
+    font-family: 'HarmonyOS Sans SC';
+    src: url('HarmonyOS_Sans_Medium.ttf') format('truetype');
+    font-weight: 400; /* 普通体，一般用 400 表示 */
+    font-style: normal;
+}
+
+/* 粗体 */
+@font-face {
+    font-family: 'HarmonyOS Sans SC';
+    src: url('HarmonyOS_Sans_Bold.ttf') format('truetype');
+    font-weight: 700; /* 粗体，一般用 700 表示 */
+    font-style: normal;
+}
