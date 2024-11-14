@@ -1,7 +1,6 @@
 <script lang="ts" setup>
-import { useServerStore } from "@/store/module/server.ts";
 import { ServerType } from "@/typing/server";
-import { computed, onBeforeUnmount, onMounted } from "vue";
+import { computed } from "vue";
 
 const props = withDefaults(
   defineProps<{
@@ -9,24 +8,6 @@ const props = withDefaults(
   }>(),
   {},
 );
-
-let stop: any;
-const serverStore = useServerStore();
-
-async function fetchServerState() {
-  await serverStore.actions.fetchServerState({
-    host: props.data.instance!.ip!,
-  });
-}
-
-onMounted(() => {
-  // 轮询获取服务器状态
-  stop = setInterval(fetchServerState, 2000);
-});
-
-onBeforeUnmount(() => {
-  stop();
-});
 
 const statusMap = {
   running: {
@@ -51,7 +32,7 @@ const statusMap = {
   },
   unknown: {
     color: "#909399",
-    text: "未知",
+    text: "加载中",
   },
 };
 
@@ -64,7 +45,10 @@ const statusOption = computed(() => {
 </script>
 
 <template>
-  <n-card embedded style="height: max-content">
+  <n-card
+    embedded
+    class="cursor-pointer transition-all hover:shadow !bg-[rgba(255,255,255,0.3)]"
+  >
     <n-space align="center">
       <div>
         <svg
@@ -90,21 +74,20 @@ const statusOption = computed(() => {
             :style="{ backgroundColor: statusOption.color }"
             class="w-2 h-2 rounded-full border-2 border-white"
           />
-          <div>
-            {{ statusOption.text }}
-          </div>
+          <div>{{ statusOption.text }}</div>
         </n-space>
       </n-space>
     </n-space>
     <template #footer>
       <n-space align="start" class="text-12px text-gray-600" vertical>
         <div>
-          CPU核心 {{ data.instance?.cpuCores }}
+          CPU核心数量 {{ data.instance?.cpuCores }}
           <n-divider vertical />
           内存 {{ data.status?.memTotal }}
           <n-divider vertical />
           磁盘 {{ data.status?.diskTotal }}
         </div>
+        <div>{{ data.instance?.os }}</div>
         <div>(公) {{ data.instance?.ip }}</div>
       </n-space>
     </template>
@@ -112,43 +95,4 @@ const statusOption = computed(() => {
   </n-card>
 </template>
 
-<style scoped>
-/* 卡片的基础样式 */
-.card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 280px;
-  height: 380px;
-  padding: 16px;
-  border-radius: 16px;
-  background-color: white;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.card:hover {
-  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
-}
-
-.card .server-icon {
-  position: relative;
-}
-
-.card .status-dot {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  width: 10px;
-  height: 10px;
-  border: 2px solid white;
-  border-radius: 50%;
-}
-
-.card-info div {
-  margin-bottom: 8px;
-}
-
-.card-info {
-  padding-top: 16px;
-}
-</style>
+<style scoped></style>

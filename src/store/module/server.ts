@@ -35,6 +35,10 @@ export const useServerStore = defineStore("server", () => {
     state.value.servers = data.map((i: ServerType.ServerInstance) => ({
       instance: i,
     }));
+
+    state.value.servers.forEach((i) =>
+      fetchServerState({ host: i.instance!.ip! }),
+    );
   };
 
   return {

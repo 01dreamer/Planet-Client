@@ -40,7 +40,9 @@ const select = async () => {
   if (props.actionable) {
     await sideStore.actions.select(props.key1);
   }
-  await props.execute(props.key1);
+  if (props.execute) {
+    props.execute(props.key1);
+  }
 };
 </script>
 

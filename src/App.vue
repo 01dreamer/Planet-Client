@@ -14,8 +14,8 @@ const route = useRoute();
 const themeOverrides = {
   common: {
     primaryColor: "#2b7bb4",
-    primaryColorHover: "#216391",
-    primaryColorPressed: "#184a70",
+    primaryColorHover: "#266da0",
+    primaryColorPressed: "#266da0",
   },
 };
 
