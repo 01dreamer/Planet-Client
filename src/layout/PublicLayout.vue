@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import CustomHeader from "@/render/components/CustomHeader.vue";
-import SideMenu from "@/render/components/SideMenu.vue";
+import CustomHeader from "@/render/components/window/WindowHeader.vue";
+import SideMenu from "@/render/components/layout/LayoutSideMenu.vue";
 </script>
 
 <template>

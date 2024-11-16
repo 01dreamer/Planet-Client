@@ -31,7 +31,8 @@
     "electron",
     "node_modules/.pnpm/@types+node@22.9.0/node_modules/@types/node/globals.d.ts",
     "node_modules/.pnpm/@types+node@22.9.0/node_modules/@types/node/globals.d.ts",
-    "node_modules/.pnpm/@types+node@22.9.0/node_modules/@types/node/globals.d.ts"
+    "node_modules/.pnpm/@types+node@22.9.0/node_modules/@types/node/globals.d.ts",
+    "node_modules/.pnpm/unplugin-auto-import@0.18.3_rollup@4.24.4/node_modules/unplugin-auto-import/auto-imports.d.ts"
   ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

@@ -45,4 +45,15 @@ export declare namespace ServerRequestType {
   export type GetServerState = {
     host: string;
   };
+
+  export type AddServer = {
+    name: string;
+    ip: string;
+    autoFullInfo?: boolean;
+    remote: {
+      user: string;
+      password: string;
+    };
+    os: string;
+  };
 }

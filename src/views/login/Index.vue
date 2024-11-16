@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import CustomHeader from "@/render/components/CustomHeader.vue";
+import CustomHeader from "@/render/components/window/WindowHeader.vue";
 
 function open() {
   window.open();

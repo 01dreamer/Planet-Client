@@ -1,4 +1,4 @@
-import { getServerList, getServerState } from "@/api";
+import * as api from "@/api";
 import { ServerRequestType, ServerType } from "@/typing/server";
 import { defineStore } from "pinia";
 import { ref } from "vue";
@@ -19,18 +19,23 @@ export const useServerStore = defineStore("server", () => {
     return state.value.servers.find((i) => i.instance!.ip === host);
   }
 
+  //添加服务器
+  async function addServer(request: ServerRequestType.AddServer) {
+    return await api.addServer(request);
+  }
+
   // 获取服务器状态
   const fetchServerState = async (
     request: ServerRequestType.GetServerState,
   ) => {
-    const { data } = await getServerState(request);
+    const data = (await api.getServerState(request)) as any;
     const server = getServer(request.host);
     if (server) server.status = data;
     return data;
   };
 
   const fetchServerList = async () => {
-    const { data } = await getServerList({ userId });
+    const data = await api.getServerList({ userId });
     if (!Array.isArray(data)) return;
     state.value.servers = data.map((i: ServerType.ServerInstance) => ({
       instance: i,
@@ -46,6 +51,7 @@ export const useServerStore = defineStore("server", () => {
     actions: {
       fetchServerList,
       fetchServerState,
+      addServer,
     },
   };
 });

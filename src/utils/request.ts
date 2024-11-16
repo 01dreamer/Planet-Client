@@ -4,10 +4,9 @@ const baseURL = import.meta.env.VITE_APP_BASE_API;
 console.log(baseURL);
 
 // 创建 axios 实例
-
 const service = axios.create({
   baseURL: baseURL || "/",
-  timeout: 5000,
+  timeout: 10000,
 });
 
 // 请求拦截器
@@ -30,7 +29,11 @@ service.interceptors.response.use(
   (response) => {
     const res = response.data;
     const { data, code, msg } = res;
-    return res;
+    if (code !== 0) {
+      window.$message.error(msg);
+      return Promise.reject(msg);
+    }
+    return data;
   },
   (error) => {
     console.error("Response Error:", error);

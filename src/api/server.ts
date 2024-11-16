@@ -8,3 +8,7 @@ export function getServerList(data: ServerRequestType.GetServerList) {
 export function getServerState(data: ServerRequestType.GetServerState) {
   return request.post("/server/get-server-state", data);
 }
+
+export function addServer(data: ServerRequestType.AddServer) {
+  return request.post("/server/add-server", data);
+}

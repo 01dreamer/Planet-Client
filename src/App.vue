@@ -1,9 +1,10 @@
 <script lang="ts" setup>
-import CustomHeader from "@/render/components/CustomHeader.vue";
+import CustomHeader from "@/render/components/window/WindowHeader.vue";
 import router from "@/router";
 import { useRouterStore } from "@/store";
 import { useWindowStore } from "@/store/module/window.ts";
 import { onMounted, watch } from "vue";
+import { GlobalThemeOverrides } from "naive-ui";
 
 import { useRoute } from "vue-router";
 
@@ -11,11 +12,20 @@ const routerStore = useRouterStore();
 const windowStore = useWindowStore();
 const route = useRoute();
 
-const themeOverrides = {
+const themeOverrides: GlobalThemeOverrides = {
   common: {
-    primaryColor: "#2b7bb4",
-    primaryColorHover: "#266da0",
-    primaryColorPressed: "#266da0",
+    primaryColor: "#35394f",
+    primaryColorHover: "#1f2026",
+    primaryColorPressed: "#1f2026",
+  },
+  Button: {
+    borderRadiusSmall: "8px",
+    borderRadiusMedium: "10px",
+  },
+  Input: {
+    borderRadius: "8px",
+    border: "1px solid #1f202650",
+    boxShadowFocus: "",
   },
 };
 
@@ -34,8 +44,10 @@ onMounted(() => {
 
 <template>
   <NConfigProvider :themeOverrides="themeOverrides">
-    <CustomHeader v-bind="windowStore.state.windows?.header" />
-    <RouterView />
+    <NMessageProvider>
+      <CustomHeader v-bind="windowStore.state.windows?.header" />
+      <RouterView />
+    </NMessageProvider>
   </NConfigProvider>
 </template>
 
