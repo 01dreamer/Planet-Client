@@ -25,7 +25,7 @@ const close = () => {
       @close="close"
     >
       <template #header>
-        <div class="flex items-center mb-10px">
+        <div class="flex items-center mb-10px select-none">
           <i :class="icon" />
           <n-text class="text-gray-600 text-14px ml-5px">{{ title }}</n-text>
         </div>

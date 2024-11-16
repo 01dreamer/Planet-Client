@@ -8,6 +8,7 @@ import App from "./App.vue";
 import router from "./router";
 
 import "virtual:uno.css";
+import "animate.css";
 
 const pinia = createPinia();
 const { message } = createDiscreteApi([

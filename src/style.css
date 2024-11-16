@@ -21,11 +21,6 @@
   border-radius: 25px;
 }
 
-#app {
-  font-family: HarmonyOS Sans SC, sans-serif;
-  user-select: none;
-}
-
 html {
   line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
@@ -40,6 +35,8 @@ html {
 
 body {
   margin: 0;
+  font-family: "HarmonyOS Sans SC Medium", sans-serif;
+  user-select: none;
 }
 
 /**

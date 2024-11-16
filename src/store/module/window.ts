@@ -23,37 +23,37 @@ export const useWindowStore = defineStore("window", () => {
 
   const addWindow = async (windowOption: WindowType.Window) => {
     await window.ipcRenderer.invoke(
-      ElectronChannel.window.create,
-      windowOption,
+        ElectronChannel.window.create,
+        windowOption,
     );
   };
 
   const closeWindow = async (id?: number) => {
     await window.ipcRenderer.invoke(
-      ElectronChannel.window.close,
-      id ?? state.value.windows?.id,
+        ElectronChannel.window.close,
+        id ?? state.value.windows?.id,
     );
   };
 
   const minimizeWindow = async (id?: number) => {
     await window.ipcRenderer.invoke(
-      ElectronChannel.window.minimize,
-      id ?? state.value.windows?.id,
+        ElectronChannel.window.minimize,
+        id ?? state.value.windows?.id,
     );
   };
 
   const unMaximizeWindow = async (id?: number) => {
     await window.ipcRenderer.invoke(
-      ElectronChannel.window.unMaximize,
-      id ?? state.value.windows?.id,
+        ElectronChannel.window.unMaximize,
+        id ?? state.value.windows?.id,
     );
     state.value.windows!.isMaximized = false;
   };
 
   const maximizeWindow = async (id?: number) => {
     await window.ipcRenderer.invoke(
-      ElectronChannel.window.maximize,
-      id ?? state.value.windows?.id,
+        ElectronChannel.window.maximize,
+        id ?? state.value.windows?.id,
     );
     state.value.windows!.isMaximized = true;
   };

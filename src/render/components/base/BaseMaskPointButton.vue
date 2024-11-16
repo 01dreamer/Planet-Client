@@ -26,7 +26,7 @@ withDefaults(defineProps<Props>(), {
 
     <div
       v-if="show"
-      class="absolute bottom--25px bg-gray-600 text-white px-10px rounded-sm ws-nowrap"
+      class="absolute bottom--25px bg-gray-600 text-white px-10px rounded-sm ws-nowrap z-99"
     >
       {{ text }}
     </div>

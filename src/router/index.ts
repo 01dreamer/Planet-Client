@@ -16,6 +16,18 @@ const routes = [
         name: "server",
         component: () => import("@/views/server/Index.vue"),
       },
+      {
+        path: "/server",
+        name: "server-detail",
+        component: () => import("@/views/server/detail/Index.vue"),
+        children: [
+          {
+            path: "/server/detail/:id",
+            name: "server-detail-summary",
+            component: () => import("@/views/server/detail/summary/Index.vue"),
+          },
+        ],
+      },
     ],
   },
   {

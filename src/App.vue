@@ -27,6 +27,7 @@ const themeOverrides: GlobalThemeOverrides = {
     border: "1px solid #1f202650",
     boxShadowFocus: "",
   },
+  Dropdown: {},
 };
 
 watch(

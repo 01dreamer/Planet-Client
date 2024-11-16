@@ -85,6 +85,7 @@ onMounted(() => {
     </n-space>
   </n-space>
   <div
+    v-if="serverStore.state.servers.length > 0"
     class="mt-6 grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 p-24px pt-0"
     style="max-height: calc(100vh - 155px); overflow-y: auto"
   >
@@ -94,7 +95,18 @@ onMounted(() => {
       :data="server"
     />
   </div>
-
+  <div
+    v-else
+    class="flex flex-col justify-center items-center w-full h-[calc(100%-155px)]"
+  >
+    <img
+      alt=""
+      class="w-64 h-64 select-none"
+      draggable="false"
+      src="/src/assets/暂无内容.svg"
+    />
+    <div class="text-xl text-gray-500 mt--10">暂无服务器</div>
+  </div>
   <BaseInputForm
     ref="addServerForm"
     v-model:show="addServerFormShow"
