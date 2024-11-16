@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import SideMenuItem from "@/render/components/SideMenuItem.vue";
+import SideMenuItem from "@/render/components/layout/LayoutSideMenuItem.vue";
 import { useSideStore, useWindowStore } from "@/store";
 
 const sideStore = useSideStore();
@@ -30,7 +30,11 @@ const test = () => {
 <template>
   <n-space align="center" class="h-100%" justify="space-between" vertical>
     <div class="!gap-0 flex flex-col justify-center items-center" @click="test">
-      <img alt="logo" class="w-8 h-8" src="../../../public/logo_planet.png" />
+      <img
+        alt="logo"
+        class="w-8 h-8"
+        src="../../../../public/logo_planet.png"
+      />
       <n-text class="font-bold text-5 mt-[-10px]">Planet</n-text>
     </div>
     <n-space align="center" justify="space-between" vertical>
