@@ -73,9 +73,9 @@ export function createWindow(
     fullscreen = false,
     maximizable = true,
     resizable = true,
-    show = true,
     closable = true,
     focusable = true,
+    show = true,
     title = "Electron Window",
     icon = path.join(process.env.VITE_PUBLIC, "logo_planet.png"),
     modal = false,
@@ -92,7 +92,7 @@ export function createWindow(
     fullscreen,
     maximizable,
     resizable,
-    show,
+    show: false,
     closable,
     focusable,
     title,
@@ -133,17 +133,21 @@ export function createWindow(
       VITE_DEV_SERVER_URL +
         "#" +
         option.router +
-        "?data=" +
-        JSON.stringify(option),
+        (option.router.includes("?") ? "&" : "?") +
+        "data=" +
+        encodeURIComponent(JSON.stringify(option)),
     );
   } else {
     win.loadFile(path.join(RENDERER_DIST, "index.html"));
   }
 
   // 在创建时显示窗口
-  if (show) {
-    win.show();
-  }
+
+  win.once("ready-to-show", () => {
+    if (show) {
+      win.show();
+    }
+  });
 
   // 设置允许加载图标资源的 CSP
   session.defaultSession.webRequest.onHeadersReceived((details, callback) => {

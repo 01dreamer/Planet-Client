@@ -3,6 +3,7 @@ import CustomHeader from "@/render/components/window/WindowHeader.vue";
 import router from "@/router";
 import { useRouterStore } from "@/store";
 import { useWindowStore } from "@/store/module/window.ts";
+import Index from "@/views/loading/Index.vue";
 import { onMounted, watch } from "vue";
 import { GlobalThemeOverrides } from "naive-ui";
 
@@ -26,8 +27,23 @@ const themeOverrides: GlobalThemeOverrides = {
     borderRadius: "8px",
     border: "1px solid #1f202650",
     boxShadowFocus: "",
+    lineHeight: "1",
   },
-  Dropdown: {},
+  Dropdown: {
+    color: "#EFF6FFFF",
+    optionColorHover: "#e3eefe",
+  },
+  Steps: {
+    indicatorBorderColorFinish: "#41b783",
+    descriptionTextColorFinish: "#41b783",
+    indicatorColorFinish: "#41b783",
+    headerTextColorFinish: "#41b783",
+    splitorColorFinish: "#41b783",
+    indicatorTextColorFinish: "#f0f0f0",
+
+    indicatorColorProcess: "#41b783",
+    indicatorBorderColorProcess: "#41b783",
+  },
 };
 
 watch(
@@ -48,6 +64,7 @@ onMounted(() => {
     <NMessageProvider>
       <CustomHeader v-bind="windowStore.state.windows?.header" />
       <RouterView />
+<!--      <Index />-->
     </NMessageProvider>
   </NConfigProvider>
 </template>

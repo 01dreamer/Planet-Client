@@ -20,7 +20,7 @@ const close = () => {
 <template>
   <n-modal :show="show">
     <n-card
-      class="!rounded-15px md:w-400px lg:w-600px xl:w-800px"
+      class="!rounded-15px md:w-400px lg:w-600px xl:w-800px !bg-[#F0F6FF] shadow-2xl shadow-[#F0F6FF10]"
       closable
       @close="close"
     >

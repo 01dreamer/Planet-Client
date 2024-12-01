@@ -9,4 +9,8 @@ export const ElectronChannel = {
     resize: "window:resize",
     show: "window:show",
   },
+  store: {
+    get: "store:get",
+    set: "store:set",
+  },
 };

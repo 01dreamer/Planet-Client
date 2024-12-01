@@ -35,7 +35,9 @@ const back = () => {
         {{ tab }}
       </n-tab>
     </n-tabs>
-    <RouterView />
+    <div class="max-h-[calc(100vh-155px)] overflow-y-auto">
+      <RouterView />
+    </div>
   </n-space>
 </template>
 

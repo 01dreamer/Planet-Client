@@ -86,7 +86,7 @@ onMounted(() => {
   </n-space>
   <div
     v-if="serverStore.state.servers.length > 0"
-    class="mt-6 grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 p-24px pt-0"
+    class="mt-6 grid md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 p-24px pt-0"
     style="max-height: calc(100vh - 155px); overflow-y: auto"
   >
     <server-card
@@ -119,16 +119,29 @@ onMounted(() => {
       require-mark-placement="left"
     >
       <n-form-item label="服务器名称" required>
-        <n-input v-model:value="addServerFormModel.name" />
+        <n-input
+          v-model:value="addServerFormModel.name"
+          placeholder="例如:张三的服务器"
+        />
       </n-form-item>
       <n-form-item label="服务器地址" required>
-        <n-input v-model:value="addServerFormModel.ip" />
+        <n-input
+          v-model:value="addServerFormModel.ip"
+          placeholder="例如:10.0.0.1"
+        />
       </n-form-item>
       <n-form-item label="服务器用户名" required>
-        <n-input v-model:value="addServerFormModel.remote.user" />
+        <n-input
+          v-model:value="addServerFormModel.remote.user"
+          placeholder="例如:root"
+        />
       </n-form-item>
       <n-form-item label="服务器密码" required>
-        <n-input v-model:value="addServerFormModel.remote.password" />
+        <n-input
+          v-model:value="addServerFormModel.remote.password"
+          type="password"
+          placeholder="请输入密码"
+        />
       </n-form-item>
       <n-space align="center" justify="end">
         <n-button @click="addServerFormShow = false">取消</n-button>

@@ -4,7 +4,6 @@ import { useSideStore, useWindowStore } from "@/store";
 
 const sideStore = useSideStore();
 const windowStore = useWindowStore();
-sideStore.state.menuOptions;
 
 const test = () => {
   windowStore.actions.closeWindow();

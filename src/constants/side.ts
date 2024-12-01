@@ -1,5 +1,8 @@
+import AppCustomUserPlane from "@/render/components/app/AppCustomUserPlane.vue";
 import { useRouterStore } from "@/store";
 import { SideType } from "@/typing/side";
+import { NAvatar, NDropdown } from "naive-ui";
+import { h } from "vue";
 
 export const initSIdeOptions: Array<SideType.SideOption> = [
   {
@@ -9,7 +12,7 @@ export const initSIdeOptions: Array<SideType.SideOption> = [
     active: true,
     execute: () => {
       const routerStore = useRouterStore();
-      routerStore.state.router.push({
+      routerStore.state.router!.push({
         name: "home",
       });
     },
@@ -21,7 +24,7 @@ export const initSIdeOptions: Array<SideType.SideOption> = [
     active: false,
     execute: () => {
       const routerStore = useRouterStore();
-      routerStore.state.router.push({
+      routerStore.state.router!.push({
         name: "server",
       });
     },
@@ -46,7 +49,41 @@ export const initSIdeOptions: Array<SideType.SideOption> = [
   },
 ];
 
+const renderAvatar = () => {
+  const options = [
+    {
+      label: "customRender",
+      type: "render",
+      render: () => h(AppCustomUserPlane),
+    },
+  ];
+
+  return h(
+    NDropdown,
+    {
+      target: "hover",
+      placement: "right",
+      size: "small",
+      options: options,
+      class: "rounded-10px",
+    },
+    () => h(NAvatar, { round: true, src: "src/assets/images.jpg" }),
+  );
+};
+
 export const initSysSideOptions: Array<SideType.SideOption> = [
+  {
+    key1: "github",
+    label: "github",
+    icon: () => renderAvatar(),
+    active: false,
+    actionable: false,
+    showMask: false,
+    showLabel: false,
+    execute: () => {
+      console.log("about");
+    },
+  },
   {
     key1: "github",
     label: "github",

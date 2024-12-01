@@ -1,4 +1,5 @@
-import { app, BrowserWindow, ipcMain } from "electron";
+import { app, BrowserWindow, ipcMain, IpcMainInvokeEvent } from "electron";
+import Store from "electron-store";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { ElectronChannel } from "../src/constants/electron.ts";
@@ -13,6 +14,7 @@ import {
   unMaximizeWindow,
 } from "./window";
 
+const store = new Store();
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // executeCommand();
@@ -61,7 +63,19 @@ app.whenReady().then(() => {
   });
 });
 
+function setStore(_: IpcMainInvokeEvent, key: string, value: any) {
+  console.log(key, value);
+  store.set(key, value);
+}
+
+function getStore(_: IpcMainInvokeEvent, key: string) {
+  return store.get(key);
+}
+
+// 注册通信事件
+// 主进程与渲染进程通信
 function registerHandler() {
+  // 窗口通信
   ipcMain.handle(ElectronChannel.window.close, closeWindow);
   ipcMain.handle(ElectronChannel.window.show, showWindow);
   ipcMain.handle(ElectronChannel.window.resize, resizeWindow);
@@ -69,4 +83,8 @@ function registerHandler() {
   ipcMain.handle(ElectronChannel.window.create, createWindow);
   ipcMain.handle(ElectronChannel.window.unMaximize, unMaximizeWindow);
   ipcMain.handle(ElectronChannel.window.maximize, maximizeWindow);
+
+  //数据持久化
+  ipcMain.handle(ElectronChannel.store.get, getStore);
+  ipcMain.handle(ElectronChannel.store.set, setStore);
 }

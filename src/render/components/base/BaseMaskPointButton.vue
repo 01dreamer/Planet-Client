@@ -24,13 +24,25 @@ withDefaults(defineProps<Props>(), {
       <i :class="`${icon} text-xl  bg-gray-600 hover:bg-gray-800  `" />
     </div>
 
-    <div
-      v-if="show"
-      class="absolute bottom--25px bg-gray-600 text-white px-10px rounded-sm ws-nowrap z-99"
-    >
-      {{ text }}
-    </div>
+    <transition name="fade">
+      <div
+        v-if="show"
+        class="absolute bottom--25px bg-gray-600 text-white px-10px rounded-sm ws-nowrap z-99"
+      >
+        {{ text }}
+      </div>
+    </transition>
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>

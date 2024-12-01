@@ -2,7 +2,7 @@
 import MaskPointButton from "@/render/components/base/BaseMaskPointButton.vue";
 import BaseStatusRound from "@/render/components/base/BaseStatusRound.vue";
 import { ServerType } from "@/typing/server";
-import { computed, ref } from "vue";
+import { ref } from "vue";
 import { useRouter } from "vue-router";
 
 withDefaults(

@@ -1,4 +1,5 @@
 import * as api from "@/api";
+import { ElectronChannel } from "@/constants/electron.ts";
 import { ServerRequestType, ServerType } from "@/typing/server";
 import { defineStore } from "pinia";
 import { ref } from "vue";
@@ -35,6 +36,12 @@ export const useServerStore = defineStore("server", () => {
   };
 
   const fetchServerList = async () => {
+    // await window.ipcRenderer.invoke(ElectronChannel.store.set, "user", "aa");
+    const data1 = await window.ipcRenderer.invoke(
+      ElectronChannel.store.get,
+      "user",
+    );
+    console.log(data1);
     const data = await api.getServerList({ userId });
     if (!Array.isArray(data)) return;
     state.value.servers = data.map((i: ServerType.ServerInstance) => ({

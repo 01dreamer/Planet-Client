@@ -6,7 +6,7 @@ console.log(baseURL);
 // 创建 axios 实例
 const service = axios.create({
   baseURL: baseURL || "/",
-  timeout: 10000,
+  timeout: 20000,
 });
 
 // 请求拦截器

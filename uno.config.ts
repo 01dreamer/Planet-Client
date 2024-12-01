@@ -6,6 +6,9 @@ import {
 } from "unocss";
 
 export default defineConfig({
+  shortcuts: {
+    border: "border border-solid border-[#dee6f3]",
+  },
   content: {
     pipeline: {
       include: ["src/**"],
